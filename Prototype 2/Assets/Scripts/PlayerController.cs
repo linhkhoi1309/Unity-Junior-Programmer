@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     public float xRange = 10.0f;
 
+    public GameObject projectilePrefab;
+
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -19,6 +21,12 @@ public class PlayerController : MonoBehaviour
         else if(transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // Launch a projectile from the player
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
     }
 }
