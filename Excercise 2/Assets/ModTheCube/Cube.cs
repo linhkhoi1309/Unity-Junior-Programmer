@@ -5,19 +5,41 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     public MeshRenderer Renderer;
+    public Vector3 initialPosition = new Vector3(0, 0, 0);
+
+    public float rotationSpeedX = 300.0f;
+    public float rotationSpeedY = 300.0f;
+    public float rotationSpeedZ = 300.0f;
+
+    public Vector3 initialScale = new Vector3(1, 1, 1);
+
+    public float scaleEpsilon = 0.5f;
+
+    public float colorChangeInterval = 0.5f;
+    public float scaleChangeInterval = 0.5f;
     
     void Start()
     {
-        transform.position = new Vector3(3, 4, 1);
-        transform.localScale = Vector3.one * 1.3f;
-        
-        Material material = Renderer.material;
-        
-        material.color = new Color(0.5f, 1.0f, 0.3f, 0.4f);
+        transform.position = initialPosition;
+        transform.localScale = initialScale;
+        InvokeRepeating("ChangeColorRandomly", 0.0f, colorChangeInterval);
+        InvokeRepeating("ChangeScaleRandomly", 0.0f, scaleChangeInterval);
     }
     
     void Update()
     {
-        transform.Rotate(10.0f * Time.deltaTime, 0.0f, 0.0f);
+        transform.Rotate(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, 0.0f);
+    }
+
+    void ChangeColorRandomly()
+    {
+        Material material = Renderer.material;
+        material.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+    }
+
+    void ChangeScaleRandomly()
+    {
+        float scaleFactor = 1.0f + Random.Range(-scaleEpsilon, scaleEpsilon);
+        transform.localScale = initialScale * scaleFactor;
     }
 }
