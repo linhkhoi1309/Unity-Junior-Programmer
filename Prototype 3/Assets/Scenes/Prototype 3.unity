@@ -601,7 +601,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892339672}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 60
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -618,7 +618,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 18
   m_CollisionDetection: 0
 --- !u!114 &892339674
 MonoBehaviour:
@@ -632,9 +632,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645fa83da2b1ee64ebafc167cf535773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  jumpForce: 15
-  gravityModifier: 3
+  jumpForce: 650
+  gravityModifier: 2
   isOnGround: 1
+  gameOver: 0
 --- !u!65 &892339675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -654,8 +655,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.2800531, y: 3.3966959, z: 1}
-  m_Center: {x: 0.013617635, y: 1.7158176, z: 2.8526323e-17}
+  m_Size: {x: 2.2800531, y: 2.8494444, z: 1}
+  m_Center: {x: 0.013617635, y: 1.4421918, z: 2.8526323e-17}
 --- !u!1 &1595025229
 GameObject:
   m_ObjectHideFlags: 0
